@@ -1,0 +1,18 @@
+TEST-T> set_faults -fault_coverage
+ Warning: Unused gate deletion affects fault coverage calculation. (M245)
+
+TEST-T> report_faults -summary
+      Uncollapsed Stuck Fault Summary Report 
+  ----------------------------------------------- 
+  fault class                     code   #faults 
+  ------------------------------  ----  --------- 
+  Detected                         DT          0 
+  Possibly detected                PT          0 
+  Undetectable                     UD          0 
+  ATPG untestable                  AU         38 
+  Not detected                     ND          0 
+  ----------------------------------------------- 
+  total faults                                38 
+  test coverage                             0.00% 
+  fault coverage                            0.00% 
+  ----------------------------------------------- 

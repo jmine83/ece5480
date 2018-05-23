@@ -1,0 +1,77 @@
+// View schematic
+read_netlist /opt/software/cadence/library/tcbn45nm/verilog/HVT/tcbn45gsbwphvt.v -library
+read_netlist lab5_circuit-1.v
+run_build_model circuit_1
+run_drc
+remove_faults -all
+add_faults -all
+run_atpg
+run_simulation
+
+// View all test pattern reports
+report_patterns -all
+
+// Export the current test patterns to file
+write_patterns name.stil -format stil
+
+// Import test patterns and run simulation
+set_patterns -delete
+set_patterns -external /*** (your directory)/name.stil -sensitive -append
+run_simulation
+set_pindata -good_sim_results 0
+refresh_schematic
+
+// Viewing all faults detected by a specified test patterns
+write_patterns name.stil -format stil
+reset_state
+set_patterns –delete
+set_patterns -external name.stil
+run_simulation
+run_fault_sim -detected_pattern_storage
+// pattern 1 selected
+report_faults -pattern_id 1
+// pin N3 sa1
+report_faults N3 -stuck 1
+
+// Basic Scan (D-ALG)
+run_atpg basic_scan_only
+// Fast Sequential (S-PODEM)
+run_atpg fast_sequential_only
+// Full Sequential
+run_atpg full_sequential_only
+
+// Writing all faults (overwrites file filename):
+write_faults filename -all -replace
+// Using an existing fault list from another tool or from a previous run:
+read_faults filename
+// Reporting the collapsed fault list:
+set_faults -report collapsed
+report_faults -summary
+// Reporting uncollapsed fault list:
+set_faults -report uncollapsed
+report_faults -summary
+// Reporting detailed information about fault list:
+set_faults -summary verbose
+report_faults -summary
+// Reporting fault coverage:
+set_faults -fault_coverage
+report_faults -summary
+// Limit Generating Patterns (default: 0 – to disable limit)
+// ATPG process stops when the N patterns are generated or fault is detected.
+set_atpg –patterns N
+// Generating random test vectors:
+run_atpg -random
+
+// Specify number of cycles to capture for sequential circuit.
+// N = Number of Clock Cycles that are applied to the design.
+set_atpg -capture_cycles N
+// Add fault to list
+add_faults pin_path -stuck <0|1|01>
+// Remove fault from list
+remove_faults pin_path -stuck <0|1|01>
+// Write a collapsed fault
+write_faults file_name –all –replace -collapsed
+
+// Enable clock signal before Design Rule Checking
+add_clocks <0 | 1> {pin_names_list} [-timing {period LE TE measure_time}] [-unit <ps | ns>]
+

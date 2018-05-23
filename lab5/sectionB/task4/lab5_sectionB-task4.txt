@@ -1,0 +1,14 @@
+4) What are differences between three circuits based on their schematics?
+
+>> Circuit Componenet Counts
+
+circuit    FF   AND2    AND3    OR2     OR3     NOT     NAND2   NAND3   NOR2    NOR3    XOR2
+
+1          4    0       0       2       1       1       1       0       0       0       0
+2          2    3       0       1       0       0       1       0       0       0       2
+3          2    1       2       1       0       1       1       0       0       0       2
+
+>> Circuit 1 has two inputs, two outputs, and seven internal wire nodes.
+>> Circuit 2 has one test control input, one output, and eight internal wire nodes.
+>> Circuit 3 has one test control input, one clear input, one output, and nine internal wire nodes.
+>> All circuit have the same sequential depth of 3.

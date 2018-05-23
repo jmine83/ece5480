@@ -1,0 +1,6 @@
+6) If there are differences between the final fault coverage reports of three circuits, what are the reasons for that?
+
+>> The final fault coverage report results appear to show that the three circuits are of three unique classifications for sequential circuits.
+>> Thus, showing that their is not one single ATPG mode that is universally better for all circuits.
+>> Thus, the most effective selection of ATPG mode to the circuit will vary.
+>> The reasons for the differences is not readily known. Only that the differences in the schematics themselves are related somehow.

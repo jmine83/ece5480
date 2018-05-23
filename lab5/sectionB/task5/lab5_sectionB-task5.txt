@@ -1,0 +1,63 @@
+5) What can be understood from analyzing all fault coverage reports for each circuit after applying three ATPG modes?
+
+>> Uncollapsed Stuck Fault Summary Report
+
+  circuit-1
+  basic-scan/fast-sequential/full-sequential
+
+  ----------------------------------------------- 
+  fault class                     code   #faults 
+  ------------------------------  ----  --------- 
+  Detected                         DT    11/33/33 
+  Possibly detected                PT     0/ 2/4 
+  Undetectable                     UD     5/ 0/0 
+  ATPG untestable                  AU     0/ 2/0 
+  Not detected                     ND     0/ 0/0 
+  ----------------------------------------------- 
+  total faults                           16/37/37 
+  test coverage %                100/91.89/94.59 
+  fault coverage %               100/91.89/94.59 
+  ----------------------------------------------- 
+
+  >> The basic scan resulted in the highest fault coverage of the combinational circuit.
+
+  circuit-2
+  basic-scan/fast-sequential/full-sequential
+
+  ----------------------------------------------- 
+  fault class                     code   #faults 
+  ------------------------------  ----  --------- 
+  Detected                         DT     0/ 0/0 
+  Possibly detected                PT     0/ 0/0 
+  Undetectable                     UD    20/ 0/0 
+  ATPG untestable                  AU     0/ 38/38 
+  Not detected                     ND     8/ 0/0 
+  ----------------------------------------------- 
+  total faults                           28/38/38 
+  test coverage %                          0/0/0 
+  fault coverage %                         0/0/0 
+  ----------------------------------------------- 
+
+  >> The circuit resulted in all faults being either undetectable or untestable.
+
+  circuit-3
+  basic-scan/fast-sequential/full-sequential
+
+  ----------------------------------------------- 
+  fault class                     code   #faults 
+  ------------------------------  ----  --------- 
+  Detected                         DT    2/ 9/32 
+  Possibly detected                PT    1/ 4/9 
+  Undetectable                     UD   21/ 0/0 
+  ATPG untestable                  AU    0/29/1 
+  Not detected                     ND    8/ 0/0 
+  ----------------------------------------------- 
+  total faults                           32/42/42 
+  test coverage %              22.73/26.19/86.90 
+  fault coverage %             22.73/26.19/86.90 
+  ----------------------------------------------- 
+
+  >> The full sequential resulted in the highest fault coverage of the sequential circuit.
+
+>> It is understood that their is not one single ATPG mode that is universally better for all circuits.
+>> Thus, the most effective selection of ATPG mode to the circuit will vary.

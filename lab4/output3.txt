@@ -1,0 +1,138 @@
+  //*************************************************************************// 
+  //                                                                         // 
+  //                        TetraMAX(R) ATPG                                 // 
+  //                        TetraMAX(R) DSMTest                              // 
+  //                                                                         // 
+  //                        Version I-2013.12                                // 
+  //                        64-bit virtual address space                     // 
+  //                                                                         // 
+  //                Copyright (C) 1996-2013 Synopsys, Inc.                   // 
+  //  This software and the associated documentation are confidential and    // 
+  //  proprietary to Synopsys, Inc. Your use or disclosure of this software  // 
+  //  is subject to the terms and conditions of a written license agreement  // 
+  //  between you, or your company, and Synopsys, Inc.                       // 
+  //                                                                         // 
+  //                                                                         // 
+  //*************************************************************************// 
+  Tcl mode is on by default. Use -notcl to run in native mode. 
+  Executing startup file "/opt/software/synopsys/tetramax/admin/setup/tmaxtcl.rc". 
+BUILD-T> source /home/a01764207/cmd3.tcl
+  Begin reading netlist ( /opt/software/cadence/library/tcbn45nm/verilog/HVT/tcbn45gsbwphvt.v )... 
+  End parsing Verilog file /opt/software/cadence/library/tcbn45nm/verilog/HVT/tcbn45gsbwphvt.v with 0 errors. 
+  End reading netlist: #modules=864, top=tsmc_xbuf, #lines=74002, CPU_time=0.10 sec, Memory=5MB 
+  Begin reading netlist ( circuit-3.v )... 
+  End parsing Verilog file circuit-3.v with 0 errors. 
+  End reading netlist: #modules=1, top=circuit3, #lines=356, CPU_time=0.00 sec, Memory=0MB 
+  ------------------------------------------------------------------------------ 
+  Begin build model for topcut = circuit3 ... 
+  ------------------------------------------------------------------------------ 
+  There were 98 primitives and 0 faultable pins removed during model optimizations 
+  End build model: #primitives=211, CPU_time=0.00 sec, Memory=0MB 
+  ------------------------------------------------------------------------------ 
+  Begin learning analyses... 
+  End learning analyses, total learning CPU time=0.00 sec. 
+  ------------------------------------------------------------------------------ 
+  ------------------------------------------------------------------------------ 
+  Begin scan design rules checking... 
+  ------------------------------------------------------------------------------ 
+  Begin simulating test protocol procedures... 
+  Test protocol simulation completed, CPU time=0.00 sec. 
+  ------------------------------------------------------------------------------ 
+  Begin scan chain operation checking... 
+  Scan chain operation checking completed, CPU time=0.00 sec. 
+  ------------------------------------------------------------------------------ 
+  Begin nonscan rules checking... 
+  Nonscan cell summary: #DFF=0  #DLAT=0  #RAM_outs=0  tla_usage_type=none 
+  Nonscan rules checking completed, CPU time=0.00 sec. 
+  ------------------------------------------------------------------------------ 
+  Begin DRC dependent learning... 
+  Fast-sequential depth results: control=0(0), observe=0(0), detect=0(0), CPU time=0.00 sec 
+  DRC dependent learning completed, CPU time=0.00 sec. 
+  ------------------------------------------------------------------------------ 
+  DRC Summary Report 
+  ------------------------------------------------------------------------------ 
+  No violations occurred during DRC process. 
+  Design rules checking was successful, total CPU time=0.00 sec. 
+  ------------------------------------------------------------------------------ 
+  0 faults were removed from the fault list. 
+  1114 faults were added to fault list. 
+  ATPG performed for stuck fault model using internal pattern source. 
+  ---------------------------------------------------------- 
+  #patterns     #faults     #ATPG faults  test      process 
+  stored     detect/active  red/au/abort  coverage  CPU time 
+  ---------  -------------  ------------  --------  -------- 
+  Begin random patterns: capture_clock = none, observe_point = po... 
+  24            881    233                  79.08%      0.00 
+ Warning: ATPG terminated due to meeting pattern count limit. (M234)
+
+  Begin deterministic ATPG: #uncollapsed_faults=233, abort_limit=10... 
+ Warning: ATPG terminated due to meeting pattern count limit. (M234)
+
+   
+      Uncollapsed Stuck Fault Summary Report 
+  ----------------------------------------------- 
+  fault class                     code   #faults 
+  ------------------------------  ----  --------- 
+  Detected                         DT        881 
+  Possibly detected                PT          0 
+  Undetectable                     UD          0 
+  ATPG untestable                  AU          0 
+  Not detected                     ND        233 
+  ----------------------------------------------- 
+  total faults                              1114 
+  test coverage                            79.08% 
+  ----------------------------------------------- 
+             Pattern Summary Report 
+  ----------------------------------------------- 
+  #internal patterns                          24 
+      #basic_scan patterns                    24 
+  ----------------------------------------------- 
+  ATPG performed for stuck fault model using internal pattern source. 
+   
+  ------------------------------------------------------------ 
+  Begin Full-Sequential ATPG for 233 uncollapsed faults ... 
+   --- abort limit : 10 seconds, NO BACKTRACK LIMIT 
+  ------------------------------------------------------------ 
+  #patterns  #faults        #ATPG faults  test       process   
+  stored     detect/active  red/au/abort  coverage   CPU time  
+  ---------  -------------  ------------  --------  ---------- 
+   
+  MAX patterns reached : # patterns = 24, MAX = 10 ... Sequential Test Generation terminated 
+   
+      Uncollapsed Stuck Fault Summary Report 
+  ----------------------------------------------- 
+  fault class                     code   #faults 
+  ------------------------------  ----  --------- 
+  Detected                         DT        881 
+  Possibly detected                PT          0 
+  Undetectable                     UD          0 
+  ATPG untestable                  AU          0 
+  Not detected                     ND        233 
+  ----------------------------------------------- 
+  total faults                              1114 
+  test coverage                            79.08% 
+  ----------------------------------------------- 
+             Pattern Summary Report 
+  ----------------------------------------------- 
+  #internal patterns                          24 
+      #basic_scan patterns                    24 
+  ----------------------------------------------- 
+  Begin good simulation of 24 internal patterns. 
+  Simulation completed: #patterns=24, #fail_pats=0(0), #failing_meas=0(0), CPU time=0.00 
+ Warning: Unused gate deletion affects fault coverage calculation. (M245)
+
+      Uncollapsed Stuck Fault Summary Report 
+  ----------------------------------------------- 
+  fault class                     code   #faults 
+  ------------------------------  ----  --------- 
+  Detected                         DT        881 
+  Possibly detected                PT          0 
+  Undetectable                     UD          0 
+  ATPG untestable                  AU          0 
+  Not detected                     ND        233 
+  ----------------------------------------------- 
+  total faults                              1114 
+  test coverage                            79.08% 
+  fault coverage                           79.08% 
+  ----------------------------------------------- 
+TEST-T> 

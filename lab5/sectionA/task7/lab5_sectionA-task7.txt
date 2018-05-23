@@ -1,0 +1,5 @@
+7) If there are differences between the results of Combinational ATPG for Pseudo-Combinational Circuit and the results of Sequential ATPG for Original-Sequential Circuit, what can be the reason for that?
+
+>> The combinational ATPG fault list shows that the fault PO2 (stuck-at-1) is undetectable whereas the sequential ATPG shows the fault in quesiton is detectable.
+>> The reason for that must be due to clock cycles of the sequential ATPG that is able to overcome the logic error of the combinational ATPG.
+>> The fast sequential test vectors appear to be based on five-valued logic whereas the full sequential test vectors appear to be based on nine-valued logic.

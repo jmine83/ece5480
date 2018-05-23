@@ -1,0 +1,225 @@
+STIL 1.0 { Design 2005; }
+Header {
+   Title "  TetraMAX (TM)  I-2013.12-i131119_202652 STIL output";
+   Date "Sat Apr  7 17:22:26 2018";
+   History {
+      Ann {*     Uncollapsed Stuck Fault Summary Report *}
+      Ann {* ----------------------------------------------- *}
+      Ann {* fault class                     code   #faults *}
+      Ann {* ------------------------------  ----  --------- *}
+      Ann {* Detected                         DT         32 *}
+      Ann {* Possibly detected                PT          9 *}
+      Ann {* Undetectable                     UD          0 *}
+      Ann {* ATPG untestable                  AU          1 *}
+      Ann {* Not detected                     ND          0 *}
+      Ann {* ----------------------------------------------- *}
+      Ann {* total faults                                42 *}
+      Ann {* test coverage                            86.90% *}
+      Ann {* ----------------------------------------------- *}
+      Ann {*  *}
+      Ann {*            Pattern Summary Report *}
+      Ann {* ----------------------------------------------- *}
+      Ann {* #internal patterns                           5 *}
+      Ann {*     #full_sequential patterns                5 *}
+      Ann {* ----------------------------------------------- *}
+      Ann {*  *}
+      Ann {* rule  severity  #fails  description *}
+      Ann {* ----  --------  ------  --------------------------------- *}
+      Ann {* N21   warning        1  unsupported UDP entry *}
+      Ann {* B9    warning        1  undriven module internal net *}
+      Ann {* B10   warning        3  unconnected module internal net *}
+      Ann {*  *}
+      Ann {* clock_name        off  usage *}
+      Ann {* ----------------  ---  -------------------------- *}
+      Ann {* clk                0   nonscan_DFF  *}
+      Ann {*  *}
+      Ann {* There are no constraint ports *}
+      Ann {* There are no equivalent pins *}
+      Ann {* There are no net connections *}
+      Ann {* Unified STIL Flow *}
+      Ann {* min_n_shifts = 1 *}
+      Ann {* serial_flag = 0 *}
+   }
+}
+Signals {
+   "clk" In; "CNT" In; "CLR" In; "PO" Out;
+}
+SignalGroups {
+   "_pi" = '"clk" + "CNT" + "CLR"'; // #signals=3
+   "_in" = '"clk" + "CNT" + "CLR"'; // #signals=3
+   "_po" = '"PO"'; // #signals=1
+   "_out" = '"PO"'; // #signals=1
+   "_default_In_Timing_" = '"clk" + "CNT" + "CLR"'; // #signals=3
+   "_default_Out_Timing_" = '"PO"'; // #signals=1
+   "_default_Clk0_Timing_" = '"clk"'; // #signals=1
+}
+Timing {
+   WaveformTable "_default_WFT_" {
+      Period '100ns';
+      Waveforms {
+         "_default_In_Timing_" { 0 { '0ns' D; } }
+         "_default_In_Timing_" { 1 { '0ns' U; } }
+         "_default_In_Timing_" { Z { '0ns' Z; } }
+         "_default_In_Timing_" { N { '0ns' N; } }
+         "_default_Clk0_Timing_" { P { '0ns' D; '50ns' U; '80ns' D; } }
+         "_default_Out_Timing_" { X { '0ns' X; } }
+         "_default_Out_Timing_" { H { '0ns' X; '40ns' H; } }
+         "_default_Out_Timing_" { T { '0ns' X; '40ns' T; } }
+         "_default_Out_Timing_" { L { '0ns' X; '40ns' L; } }
+      }
+   }
+}
+ScanStructures {
+   // Uncomment and modify the following to suit your design
+   // ScanChain "chain_name" { ScanIn "chain_input_name"; ScanOut "chain_output_name"; }
+}
+PatternBurst "_burst_" {
+   PatList { "_pattern_" {
+   }
+}}
+PatternExec {
+   PatternBurst "_burst_";
+}
+Procedures {
+   "capture_clk" {
+      W "_default_WFT_";
+      C { "_po"=X; }
+      "forcePI": V { "_pi"=###; }
+      "measurePO": V { "_po"=#; }
+      C { "_po"=X; }
+      "pulse": V { "clk"=P; }
+   }
+   "capture" {
+      W "_default_WFT_";
+      C { "_po"=X; }
+      "forcePI": V { "_pi"=###; }
+      "measurePO": V { "_po"=#; }
+   }
+   // Uncomment and modify the following to suit your design
+   // load_unload {
+      // V { "clk" = 0; } // force clocks off and scan enable pins active
+      // Shift { V { _si=#; _so=#; "clk" = P; }} // pulse shift clocks
+   // }
+}
+MacroDefs {
+   "test_setup" {
+      W "_default_WFT_";
+      V { "clk"=0; }
+   }
+}
+Pattern "_pattern_" {
+   W "_default_WFT_";
+   "precondition all Signals": C { "_pi"=000; "_po"=X; }
+   Macro "test_setup";
+   Ann {* full_sequential *}
+   "pattern 0": V { "_pi"=011; }
+   Ann {* Xs_are_explicit *}
+   V { "_po"=X; }
+   C { "_po"=X; }
+   V { "clk"=P; }
+   V { "_pi"=010; }
+   V { "_po"=L; }
+   C { "_po"=X; }
+   V { "clk"=P; }
+   V { "_pi"=011; }
+   V { "_po"=L; }
+   C { "_po"=X; }
+   V { "_pi"=010; }
+   V { "_po"=L; }
+   C { "_po"=X; }
+   V { "clk"=P; }
+   V { "_pi"=000; }
+   "end 0 measurePO": V { "_po"=H; }
+   C { "_po"=X; }
+   Ann {* full_sequential *}
+   "pattern 1": V { "_pi"=001; }
+   V { "_po"=H; }
+   C { "_po"=X; }
+   V { "clk"=P; }
+   V { "_pi"=010; }
+   V { "_po"=L; }
+   C { "_po"=X; }
+   V { "clk"=P; }
+   V { "_pi"=010; }
+   V { "_po"=L; }
+   C { "_po"=X; }
+   V { "clk"=P; }
+   V { "_pi"=010; }
+   V { "_po"=H; }
+   C { "_po"=X; }
+   V { "clk"=P; }
+   V { "_pi"=001; }
+   "end 1 measurePO": V { "_po"=L; }
+   C { "_po"=X; }
+   Ann {* full_sequential *}
+   "pattern 2": V { "_pi"=011; }
+   V { "_po"=L; }
+   C { "_po"=X; }
+   V { "clk"=P; }
+   V { "_pi"=010; }
+   V { "_po"=L; }
+   C { "_po"=X; }
+   V { "clk"=P; }
+   V { "_pi"=010; }
+   V { "_po"=L; }
+   C { "_po"=X; }
+   V { "clk"=P; }
+   V { "_pi"=000; }
+   V { "_po"=H; }
+   C { "_po"=X; }
+   V { "clk"=P; }
+   V { "_pi"=010; }
+   "end 2 measurePO": V { "_po"=H; }
+   C { "_po"=X; }
+   Ann {* full_sequential *}
+   "pattern 3": V { "_pi"=011; }
+   V { "_po"=H; }
+   C { "_po"=X; }
+   V { "clk"=P; }
+   V { "_pi"=010; }
+   V { "_po"=L; }
+   C { "_po"=X; }
+   V { "clk"=P; }
+   V { "_pi"=010; }
+   V { "_po"=L; }
+   C { "_po"=X; }
+   V { "clk"=P; }
+   V { "_pi"=010; }
+   V { "_po"=H; }
+   C { "_po"=X; }
+   V { "clk"=P; }
+   V { "_pi"=010; }
+   V { "_po"=L; }
+   C { "_po"=X; }
+   V { "_pi"=010; }
+   V { "_po"=L; }
+   C { "_po"=X; }
+   V { "clk"=P; }
+   V { "_pi"=001; }
+   "end 3 measurePO": V { "_po"=L; }
+   C { "_po"=X; }
+   Ann {* full_sequential *}
+   "pattern 4": V { "_pi"=001; }
+   V { "_po"=L; }
+   C { "_po"=X; }
+   V { "clk"=P; }
+   V { "_pi"=010; }
+   V { "_po"=L; }
+   C { "_po"=X; }
+   V { "clk"=P; }
+   V { "_pi"=000; }
+   V { "_po"=L; }
+   C { "_po"=X; }
+   V { "clk"=P; }
+   V { "_pi"=001; }
+   V { "_po"=L; }
+   C { "_po"=X; }
+   V { "_pi"=010; }
+   V { "_po"=L; }
+   C { "_po"=X; }
+   V { "clk"=P; }
+   V { "_pi"=001; }
+   "end 4 measurePO": V { "_po"=H; }
+}
+
+// Patterns reference 77 V statements, generating 77 test cycles

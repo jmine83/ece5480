@@ -1,0 +1,184 @@
+  //*************************************************************************// 
+  //                                                                         // 
+  //                        TetraMAX(R) ATPG                                 // 
+  //                        TetraMAX(R) DSMTest                              // 
+  //                                                                         // 
+  //                        Version I-2013.12                                // 
+  //                        64-bit virtual address space                     // 
+  //                                                                         // 
+  //                Copyright (C) 1996-2013 Synopsys, Inc.                   // 
+  //  This software and the associated documentation are confidential and    // 
+  //  proprietary to Synopsys, Inc. Your use or disclosure of this software  // 
+  //  is subject to the terms and conditions of a written license agreement  // 
+  //  between you, or your company, and Synopsys, Inc.                       // 
+  //                                                                         // 
+  //                                                                         // 
+  //*************************************************************************// 
+  Tcl mode is on by default. Use -notcl to run in native mode. 
+  Executing startup file "/opt/software/synopsys/tetramax/admin/setup/tmaxtcl.rc". 
+BUILD-T> source /home/a01764207/cmd2.tcl
+  Begin reading netlist ( /opt/software/cadence/library/tcbn45nm/verilog/HVT/tcbn45gsbwphvt.v )... 
+  End parsing Verilog file /opt/software/cadence/library/tcbn45nm/verilog/HVT/tcbn45gsbwphvt.v with 0 errors. 
+  End reading netlist: #modules=864, top=tsmc_xbuf, #lines=74002, CPU_time=0.11 sec, Memory=5MB 
+  Begin reading netlist ( circuit-3.v )... 
+  End parsing Verilog file circuit-3.v with 0 errors. 
+  End reading netlist: #modules=1, top=circuit3, #lines=356, CPU_time=0.00 sec, Memory=0MB 
+  ------------------------------------------------------------------------------ 
+  Begin build model for topcut = circuit3 ... 
+  ------------------------------------------------------------------------------ 
+  There were 98 primitives and 0 faultable pins removed during model optimizations 
+  End build model: #primitives=211, CPU_time=0.00 sec, Memory=0MB 
+  ------------------------------------------------------------------------------ 
+  Begin learning analyses... 
+  End learning analyses, total learning CPU time=0.00 sec. 
+  ------------------------------------------------------------------------------ 
+  ------------------------------------------------------------------------------ 
+  Begin scan design rules checking... 
+  ------------------------------------------------------------------------------ 
+  Begin simulating test protocol procedures... 
+  Test protocol simulation completed, CPU time=0.00 sec. 
+  ------------------------------------------------------------------------------ 
+  Begin scan chain operation checking... 
+  Scan chain operation checking completed, CPU time=0.00 sec. 
+  ------------------------------------------------------------------------------ 
+  Begin nonscan rules checking... 
+  Nonscan cell summary: #DFF=0  #DLAT=0  #RAM_outs=0  tla_usage_type=none 
+  Nonscan rules checking completed, CPU time=0.00 sec. 
+  ------------------------------------------------------------------------------ 
+  Begin DRC dependent learning... 
+  Fast-sequential depth results: control=0(0), observe=0(0), detect=0(0), CPU time=0.00 sec 
+  DRC dependent learning completed, CPU time=0.00 sec. 
+  ------------------------------------------------------------------------------ 
+  DRC Summary Report 
+  ------------------------------------------------------------------------------ 
+  No violations occurred during DRC process. 
+  Design rules checking was successful, total CPU time=0.00 sec. 
+  ------------------------------------------------------------------------------ 
+  0 faults were removed from the fault list. 
+  1114 faults were added to fault list. 
+  ATPG performed for stuck fault model using internal pattern source. 
+  ---------------------------------------------------------- 
+  #patterns     #faults     #ATPG faults  test      process 
+  stored     detect/active  red/au/abort  coverage  CPU time 
+  ---------  -------------  ------------  --------  -------- 
+  Begin fast-seq ATPG: #uncollapsed_faults=1114, abort_limit=10, depth=4... 
+  1              86   1028         0/0/0     7.72%      0.00 
+  2              56    972         0/0/0    12.75%      0.00 
+  3             107    865         0/0/0    22.35%      0.00 
+  4              45    820         0/0/0    26.39%      0.00 
+  5              98    722         0/0/0    35.19%      0.00 
+  6               7    715         0/0/0    35.82%      0.00 
+  7               8    707         0/0/0    36.54%      0.00 
+  8              23    684         0/0/0    38.60%      0.01 
+  9               5    679         0/0/0    39.05%      0.01 
+  10              2    677         0/0/0    39.23%      0.01 
+  11             53    624         0/0/0    43.99%      0.01 
+  12             16    608         0/0/0    45.42%      0.01 
+  13             41    567         0/0/0    49.10%      0.01 
+  14             17    550         0/0/0    50.63%      0.01 
+  15              6    544         0/0/0    51.17%      0.01 
+  16             18    526         0/0/0    52.78%      0.01 
+  17             50    476         0/0/0    57.27%      0.01 
+  18             38    438         0/0/0    60.68%      0.01 
+  19             20    418         0/0/0    62.48%      0.01 
+  20              5    413         0/0/0    62.93%      0.01 
+  21             12    401         0/0/0    64.00%      0.01 
+  22              2    399         0/0/0    64.18%      0.01 
+  23             55    344         0/0/0    69.12%      0.01 
+  24             20    324         0/0/0    70.92%      0.01 
+  25              8    316         0/0/0    71.63%      0.01 
+  26             30    286         0/0/0    74.33%      0.01 
+  27             39    247         0/0/0    77.83%      0.01 
+  28             20    227         0/0/0    79.62%      0.01 
+  29              7    220         0/0/0    80.25%      0.01 
+  30              3    217         0/0/0    80.52%      0.02 
+  31             24    193         0/0/0    82.68%      0.02 
+  32              1    192         0/0/0    82.76%      0.02 
+  33              2    190         0/0/0    82.94%      0.02 
+  34              3    187         0/0/0    83.21%      0.02 
+  35              7    180         0/0/0    83.84%      0.02 
+  36              2    178         0/0/0    84.02%      0.02 
+  37             18    160         0/0/0    85.64%      0.02 
+  38              3    157         0/0/0    85.91%      0.02 
+  39              5    152         0/0/0    86.36%      0.02 
+  40              9    143         0/0/0    87.16%      0.02 
+  41              1    142         0/0/0    87.25%      0.02 
+  42              4    138         0/0/0    87.61%      0.02 
+  43              4    134         0/0/0    87.97%      0.02 
+  44              2    132         0/0/0    88.15%      0.02 
+  45              4    128         0/0/0    88.51%      0.02 
+  46              7    121         0/0/0    89.14%      0.02 
+  47              2    119         0/0/0    89.32%      0.02 
+  48              3    116         0/0/0    89.59%      0.02 
+  49              2    114         0/0/0    89.77%      0.02 
+  50              1    113         0/0/0    89.86%      0.02 
+  51              3    110         0/0/0    90.13%      0.02 
+  52              3    107         0/0/0    90.39%      0.02 
+  53              7    100         0/0/0    91.02%      0.02 
+  54             21     79         0/0/0    92.91%      0.02 
+  55              2     77         0/0/0    93.09%      0.02 
+  56              3     74         0/0/0    93.36%      0.02 
+  57              1     73         0/0/0    93.45%      0.02 
+  58              1     72         0/0/0    93.54%      0.02 
+  59              1     71         0/0/0    93.63%      0.02 
+  60              1     70         0/0/0    93.72%      0.02 
+  61              1     69         0/0/0    93.81%      0.02 
+  62              2     67         0/0/0    93.99%      0.02 
+  63              1     66         0/0/0    94.08%      0.02 
+  64              2     64         0/0/0    94.25%      0.02 
+  65              3     61         0/0/0    94.52%      0.02 
+  66              2     59         0/0/0    94.70%      0.02 
+  67              3     56         0/0/0    94.97%      0.02 
+  68              1     55         0/0/4    95.06%      0.02 
+  69              2     53         0/0/5    95.24%      0.02 
+  70              2     51         0/0/5    95.42%      0.02 
+  71              1     50         0/0/5    95.51%      0.02 
+  72              4     46         0/0/5    95.87%      0.02 
+  73              5     41         0/0/5    96.32%      0.02 
+  74              1     40         0/0/5    96.41%      0.02 
+  75              1     39         0/0/5    96.50%      0.02 
+  76              4     35         0/0/5    96.86%      0.02 
+  77              1     34         0/0/5    96.95%      0.02 
+  78              1     33         0/0/5    97.04%      0.02 
+  79              1     32         0/0/5    97.13%      0.02 
+  80              1     31         0/0/5    97.22%      0.02 
+  81              1     30         0/0/5    97.31%      0.02 
+  82              1     28         1/0/5    97.48%      0.02 
+   
+      Uncollapsed Stuck Fault Summary Report 
+  ----------------------------------------------- 
+  fault class                     code   #faults 
+  ------------------------------  ----  --------- 
+  Detected                         DT       1085 
+  Possibly detected                PT          0 
+  Undetectable                     UD          1 
+  ATPG untestable                  AU          0 
+  Not detected                     ND         28 
+  ----------------------------------------------- 
+  total faults                              1114 
+  test coverage                            97.48% 
+  ----------------------------------------------- 
+             Pattern Summary Report 
+  ----------------------------------------------- 
+  #internal patterns                          82 
+      #fast_sequential patterns               82 
+  ----------------------------------------------- 
+  Begin good simulation of 82 internal patterns. 
+  Simulation completed: #patterns=82, #fail_pats=0(0), #failing_meas=0(0), CPU time=0.00 
+ Warning: Unused gate deletion affects fault coverage calculation. (M245)
+
+      Uncollapsed Stuck Fault Summary Report 
+  ----------------------------------------------- 
+  fault class                     code   #faults 
+  ------------------------------  ----  --------- 
+  Detected                         DT       1085 
+  Possibly detected                PT          0 
+  Undetectable                     UD          1 
+  ATPG untestable                  AU          0 
+  Not detected                     ND         28 
+  ----------------------------------------------- 
+  total faults                              1114 
+  test coverage                            97.48% 
+  fault coverage                           97.40% 
+  ----------------------------------------------- 
+TEST-T> 

@@ -1,0 +1,99 @@
+STIL 1.0 { Design 2005; }
+Header {
+   Title "  TetraMAX (TM)  I-2013.12-i131119_202652 STIL output";
+   Date "Sat Apr  7 17:21:30 2018";
+   History {
+      Ann {*     Uncollapsed Stuck Fault Summary Report *}
+      Ann {* ----------------------------------------------- *}
+      Ann {* fault class                     code   #faults *}
+      Ann {* ------------------------------  ----  --------- *}
+      Ann {* Detected                         DT          2 *}
+      Ann {* Possibly detected                PT          1 *}
+      Ann {* Undetectable                     UD         21 *}
+      Ann {* ATPG untestable                  AU          0 *}
+      Ann {* Not detected                     ND          8 *}
+      Ann {* ----------------------------------------------- *}
+      Ann {* total faults                                32 *}
+      Ann {* test coverage                            22.73% *}
+      Ann {* ----------------------------------------------- *}
+      Ann {*  *}
+      Ann {*            Pattern Summary Report *}
+      Ann {* ----------------------------------------------- *}
+      Ann {* #internal patterns                           1 *}
+      Ann {*     #basic_scan patterns                     1 *}
+      Ann {* ----------------------------------------------- *}
+      Ann {*  *}
+      Ann {* rule  severity  #fails  description *}
+      Ann {* ----  --------  ------  --------------------------------- *}
+      Ann {* B23   warning        1  feedback path *}
+      Ann {* X1    warning        1  sensitizable feedback path *}
+      Ann {*  *}
+      Ann {* There are no clocks *}
+      Ann {* There are no constraint ports *}
+      Ann {* There are no equivalent pins *}
+      Ann {* There are no net connections *}
+      Ann {* Unified STIL Flow *}
+      Ann {* min_n_shifts = 1 *}
+      Ann {* serial_flag = 0 *}
+   }
+}
+Signals {
+   "CNT" In; "CLR" In; "PO" Out;
+}
+SignalGroups {
+   "_default_In_Timing_" = '"CNT" + "CLR"'; // #signals=2
+   "_pi" = '"CNT" + "CLR"'; // #signals=2
+   "_in" = '"CNT" + "CLR"'; // #signals=2
+   "_default_Out_Timing_" = '"PO"'; // #signals=1
+   "_po" = '"PO"'; // #signals=1
+   "_out" = '"PO"'; // #signals=1
+}
+Timing {
+   WaveformTable "_default_WFT_" {
+      Period '100ns';
+      Waveforms {
+         "_default_In_Timing_" { 0 { '0ns' D; } }
+         "_default_In_Timing_" { 1 { '0ns' U; } }
+         "_default_In_Timing_" { Z { '0ns' Z; } }
+         "_default_In_Timing_" { N { '0ns' N; } }
+         "_default_Out_Timing_" { X { '0ns' X; } }
+         "_default_Out_Timing_" { H { '0ns' X; '40ns' H; } }
+         "_default_Out_Timing_" { T { '0ns' X; '40ns' T; } }
+         "_default_Out_Timing_" { L { '0ns' X; '40ns' L; } }
+      }
+   }
+}
+ScanStructures {
+   // Uncomment and modify the following to suit your design
+   // ScanChain "chain_name" { ScanIn "chain_input_name"; ScanOut "chain_output_name"; }
+}
+PatternBurst "_burst_" {
+   PatList { "_pattern_" {
+   }
+}}
+PatternExec {
+   PatternBurst "_burst_";
+}
+Procedures {
+   "capture" {
+      W "_default_WFT_";
+      C { "_po"=X; }
+      "forcePI": V { "_pi"=##; }
+      "measurePO": V { "_po"=#; }
+   }
+   // Uncomment and modify the following to suit your design
+   // load_unload {
+      // V { } // force clocks off and scan enable pins active
+      // Shift { V { _si=#; _so=#; }} // pulse shift clocks
+   // }
+}
+MacroDefs {
+}
+Pattern "_pattern_" {
+   W "_default_WFT_";
+   "precondition all Signals": C { "_pi"=00; "_po"=X; }
+   "pattern 0": Call "capture" { 
+      "_pi"=11; "_po"=L; }
+}
+
+// Patterns reference 2 V statements, generating 2 test cycles
